@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from BasePage import BasePage
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 # 继承BasePage类
@@ -20,7 +21,10 @@ class Gf1TaskManagerPage(BasePage):
     trg_cor_loc = ('XPATH', '//*[@id="targetCoord"]')
     new_folder_loc = ('XPATH', '//*[@id="newFolder"]')
     origin_image_loc = ('XPATH', '//*[@id="folderName"]')
-    button_next_loc = ('XPATH', '//*[@id="tab-content-id"]/ul/li[4]/a')
+    button_next_loc = ('LINK_TEXT', '下一步')
+    button_finish_loc = ('LINK_TEXT', '完成')
+    start_img_loc =('XPATH', '//*[@id="taskUi"]/li[1]/img[@id="start"]')
+    button_ok_button = ('LINK_TEXT', '确定')
 
     # 操作
     # 通过继承覆盖（Overriding）方法：如果子类和父类的方法名相同，优先用子类自己的方法。
@@ -76,3 +80,77 @@ class Gf1TaskManagerPage(BasePage):
     def click_button_next(self):
         self.find_element(self.button_next_loc).click()
 
+    # 选择基础参数-缩略图生成
+    def select_thumbnail_generation(self, text):
+        if text != "生成" and text != "不生成":
+            text_input = "生成"
+        else:
+            text_input = text
+        elem = self.find_element(self.trg_cor_loc)
+        Select(elem).select_by_visible_text(text_input)
+
+    # 选择基础参数-产品类型
+    def select_product_type(self, text):
+        if text != "GEOTIFF" and text != "SPIMG":
+            text_input = "GEOTIFF"
+        else:
+            text_input = text
+        elem = self.find_element(self.trg_cor_loc)
+        Select(elem).select_by_visible_text(text_input)
+
+    # 选择基础参数-产品类型
+    def select_product_type(self, text):
+        if text != "GEOTIFF" and text != "SPIMG":
+            text_input = "GEOTIFF"
+        else:
+            text_input = text
+        elem = self.find_element(self.trg_cor_loc)
+        Select(elem).select_by_visible_text(text_input)
+
+    # 选择基础参数-投影类型
+    def select_projection_method(self, text):
+        if text != "WGS84" and text != "Gauss-Kruger" and text != "UTM":
+            text_input = "WGS84"
+        else:
+            text_input = text
+        elem = self.find_element(self.trg_cor_loc)
+        Select(elem).select_by_visible_text(text_input)
+
+    # 选择基础参数-几何校正
+    def select_geometric_correction(self, text):
+        if text != "几何校正" and text != "正射校正":
+            text_input = "几何校正"
+        else:
+            text_input = text
+        elem = self.find_element(self.trg_cor_loc)
+        Select(elem).select_by_visible_text(text_input)
+
+     # 输入基础参数影像分辨率Image resolution
+    def input_image_resolution(self, text):
+        if text == "":
+            text_input = 0
+        else:
+            text_input = text
+        self.find_element(self.new_folder_loc).clear()
+        self.find_element(self.new_folder_loc).send_keys(text_input)
+
+    # 选择基础参数-分辨率单位
+    def select_resolution_unit(self, text):
+        if text != "度" and text != "米":
+            text_input = "度"
+        else:
+            text_input = text
+        elem = self.find_element(self.trg_cor_loc)
+        Select(elem).select_by_visible_text(text_input)
+
+    # 点击【完成】
+    def click_button_finish(self):
+        self.find_element(self.button_finish_loc).click()
+
+    #  开始任务
+    def click_begin_task(self):
+        self.find_element(self.start_img_loc).click()
+
+    #  开始确认开始任务
+    def click_ok_button(self):
+        self.find_element(self.button_ok_button).click()

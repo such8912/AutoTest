@@ -37,6 +37,8 @@ class BasePage(object):
         try:
             type = element[0]
             value = element[1]
+            print "type:"+ type
+            print "value:"+ value
             if type == "id" or type == "ID" or type == "Id":
                 WebDriverWait(self.driver,10).until(lambda driver: driver.find_element_by_id(value).is_displayed())
                 elem = self.driver.find_element_by_id(value)

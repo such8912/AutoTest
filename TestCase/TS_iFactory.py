@@ -7,12 +7,15 @@ Project:使用unittest框架编写测试用例。
 import unittest
 import time
 
+from selenium.webdriver.support.wait import WebDriverWait
+
 from TestPage.ifactory_homepage import IfactoryHomePage
 from TestPage.ifactory_login import IfactoryLoginPage
 from TestPage.ifactory_imageprocess import ImageProcessPage
 from TestPage.browser_engine import BrowserEngine
 
 from TestPage.ifactory_task_manager_gf1 import Gf1TaskManagerPage
+
 
 
 class CaseLoginICenter(unittest.TestCase):
@@ -30,7 +33,7 @@ class CaseLoginICenter(unittest.TestCase):
         self.addtask_gf1_url = "http://192.168.31.167:8283/pixelfactory/views/task/task.html?id=46022e53ed064c75866be6701b67138f"
 
         # data
-        self.name = "test_task"  # 名称
+        self.name = "test_task4"  # 名称
         self.src_cor = "GCS WGS 1984"  # 源坐标系，已设置缺省值GCS WGS 1984
         self.trg_cor = "GCS WGS 1984"  # 目的坐标系，已设置缺省值GCS WGS 1984
         self.org_path = "/home/data/2j-GF1/"  # 原始影像路径
@@ -67,10 +70,28 @@ class CaseLoginICenter(unittest.TestCase):
         addtask_page.input_origin_path(self.driver, self.org_path)
         addtask_page.input_prj_path(self.name)  # 工程路径新建文件夹名称与工程名保持一致
         addtask_page.click_button_next()
+        time.sleep(1)
 
         # 使用滚动条滚动到指定位置
-        addtask_page.scroll_target(self.driver,"MergeLayers521")
+        addtask_page.scroll_target(self.driver, "MergeLayers521")
+
+        # 点击完成
+        addtask_page.click_button_finish()
         time.sleep(5)
+
+        # 点击完成后需动态等待检索到【+】按钮（暂不可行）
+        #WebDriverWait(self.driver,10).until(lambda driver: driver.find_element_by_xpath('//*/img[@class="taskImg"]').is_displayed())
+
+        # 点击开始任务
+        addtask_page.click_begin_task()
+        time.sleep(2)
+
+        # 点击确认开始
+        addtask_page.click_ok_button()
+
+        time.sleep(10)
+
+        
 
     def tearDown(self):
         self.driver.quit()
