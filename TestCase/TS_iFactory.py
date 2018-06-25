@@ -1,8 +1,8 @@
 # coding=utf-8
 '''
 Created on 2016-8-13
-@author: Jennifer
-Project:使用unittest框架编写测试用例。
+@author: suchao
+Project:使用unittest框架编写测试用例,实现GF-1匀光匀色流程创建。
 '''
 import unittest
 import time
@@ -15,7 +15,6 @@ from TestPage.ifactory_imageprocess import ImageProcessPage
 from TestPage.browser_engine import BrowserEngine
 
 from TestPage.ifactory_task_manager_gf1 import Gf1TaskManagerPage
-
 
 
 class CaseLoginICenter(unittest.TestCase):
@@ -33,7 +32,7 @@ class CaseLoginICenter(unittest.TestCase):
         self.addtask_gf1_url = "http://192.168.31.167:8283/pixelfactory/views/task/task.html?id=46022e53ed064c75866be6701b67138f"
 
         # data
-        self.name = "test_task4"  # 名称
+        self.name = "test_task22"  # 名称
         self.src_cor = "GCS WGS 1984"  # 源坐标系，已设置缺省值GCS WGS 1984
         self.trg_cor = "GCS WGS 1984"  # 目的坐标系，已设置缺省值GCS WGS 1984
         self.org_path = "/home/data/2j-GF1/"  # 原始影像路径
@@ -60,7 +59,7 @@ class CaseLoginICenter(unittest.TestCase):
 
         # 点击新增任务
         addtask_page = Gf1TaskManagerPage(self.driver, self.addtask_gf1_url, "EditTask")
-        addtask_page.click_gf1_addtask_nav()
+        # addtask_page.click_gf1_addtask_nav()
         addtask_page.click_gf1_addtask()
         time.sleep(1)
         # 填写任务参数
@@ -77,12 +76,20 @@ class CaseLoginICenter(unittest.TestCase):
 
         # 点击完成
         addtask_page.click_button_finish()
-        time.sleep(5)
+        # time.sleep(5)
 
-        # 点击完成后需动态等待检索到【+】按钮（暂不可行）
-        #WebDriverWait(self.driver,10).until(lambda driver: driver.find_element_by_xpath('//*/img[@class="taskImg"]').is_displayed())
+        # 点击完成后需动态新的任务出现在页面上（共等待10秒，每隔1秒检索一次，否则抛异常）
+        # WebDriverWait(self.driver, 10, 1).until(lambda driver: driver.find_element_by_xpath(
+        #     '//label[@style="color: #009999;padding-top: 8px" and text()=%s ]' % self.name).is_displayed())
+
+        try:
+            WebDriverWait(self.driver, 10, 1).until(lambda driver: driver.find_element_by_xpath(
+                '//label[text()="%s" ]' % self.name).is_displayed())
+        except:
+            print ("element can not find")
 
         # 点击开始任务
+        time.sleep(1)
         addtask_page.click_begin_task()
         time.sleep(2)
 
@@ -90,8 +97,6 @@ class CaseLoginICenter(unittest.TestCase):
         addtask_page.click_ok_button()
 
         time.sleep(10)
-
-        
 
     def tearDown(self):
         self.driver.quit()

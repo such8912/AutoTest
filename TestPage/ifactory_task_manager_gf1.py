@@ -15,6 +15,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 class Gf1TaskManagerPage(BasePage):
     # 定位器，通过元素属性定位元素对象
     addtask_loc = ('XPATH', '//*/img[@class="taskImg"]')
+    # addtask_loc = ('XPATH', '//*[@class="taskImg"]')
     addtask_nav_loc = ('XPATH', '//*[@id="taskUi"]')
     task_name_loc = ('XPATH', '//*[@id="name"]')
     src_cor_loc = ('XPATH', '//*[@id="sourceCoord"]')
@@ -37,9 +38,9 @@ class Gf1TaskManagerPage(BasePage):
     def click_gf1_addtask(self):
         self.find_element(self.addtask_loc).click()
 
-    # 点击新增任务【+】旁边的空白处，先找到该层元素，再去点新增任务【+】
-    def click_gf1_addtask_nav(self):
-        self.find_element(self.addtask_nav_loc).click()
+    # # 点击新增任务【+】旁边的空白处，先找到该层元素，再去点新增任务【+】
+    # def click_gf1_addtask_nav(self):
+    #     self.find_element(self.addtask_nav_loc).click()
 
     # 输入名称：调用send_keys对象
     def input_task_name(self, name):
