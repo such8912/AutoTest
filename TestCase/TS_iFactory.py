@@ -19,28 +19,30 @@ from TestPage.ifactory_task_manager_gf1 import Gf1TaskManagerPage
 
 
 # 解析流程所使用的(状态)图片，例如: ../../images/flow/state/wanchen.png
-def get_result(path):
+def get_process_state(path):
     result = path.split('state/')
     state = result[1].split('.')[0]
     return state
 
 
 class CaseLoginICenter(unittest.TestCase):
-    """
-          登录iCenter的case
-    """
 
     def setUp(self):
         self.driver = BrowserEngine(self).get_browser()  # 启动浏览器
 
+        ip = "http://192.168.31.167:8283"
+        self.login_url = ip + "/pixelfactory/views/index.html"
+        self.homepage_url = ip + "/pixelfactory/views/task/index.html"
+        self.image_process_url = ip + "/pixelfactory/views/task/flows.html"
+        self.add_task_gf1_url = ip + "/pixelfactory/views/task/task.html?id=46022e53ed064c75866be6701b67138f"
         # url
-        self.login_url = "http://192.168.31.167:8283/pixelfactory/views/index.html"
-        self.homepage_url = "http://192.168.31.167:8283/pixelfactory/views/task/index.html"
-        self.image_process_url = "http://192.168.31.167:8283/pixelfactory/views/task/flows.html"
-        self.add_task_gf1_url = "http://192.168.31.167:8283/pixelfactory/views/task/task.html?id=46022e53ed064c75866be6701b67138f"
+        # self.login_url = "http://192.168.31.167:8283/pixelfactory/views/index.html"
+        # self.homepage_url = "http://192.168.31.167:8283/pixelfactory/views/task/index.html"
+        # self.image_process_url = "http://192.168.31.167:8283/pixelfactory/views/task/flows.html"
+        # self.add_task_gf1_url = "http://192.168.31.167:8283/pixelfactory/views/task/task.html?id=46022e53ed064c75866be6701b67138f"
 
         # data
-        self.name = "test_task35"  # 名称
+        self.name = "test_task36"  # 名称
         self.src_cor = "GCS WGS 1984"  # 源坐标系，已设置缺省值GCS WGS 1984
         self.trg_cor = "GCS WGS 1984"  # 目的坐标系，已设置缺省值GCS WGS 1984
         self.org_path = "/home/data/3j-GF1/input"  # 原始影像路径
@@ -66,7 +68,7 @@ class CaseLoginICenter(unittest.TestCase):
         time.sleep(1)
 
         # 点击新增任务
-        addtask_page = Gf1TaskManagerPage(self.driver, self.add_ask_gf1_url, "EditTask")
+        addtask_page = Gf1TaskManagerPage(self.driver, self.add_task_gf1_url, "EditTask")
         # addtask_page.click_gf1_addtask_nav()
         addtask_page.click_gf1_addtask()
         time.sleep(1)
@@ -108,7 +110,7 @@ class CaseLoginICenter(unittest.TestCase):
         # 获取匀光匀色的状态
         # xpath1 = '//div[@id="flowUi"]/div[@id="state_decide8"]/img[1]'
         # last_path = self.driver.find_element_by_xpath(xpath1).get_attribute("src")
-        # result = get_result(last_path)
+        # result = get_process_state(last_path)
 
         result8 = "zhunbei"
         process_result = False
@@ -120,7 +122,7 @@ class CaseLoginICenter(unittest.TestCase):
             # （3）如果匀光匀色最终状态为cuowu,则说明恰好流程在匀光匀色出错，流程错误结束。
             time.sleep(5)
             xpath8 = '//div[@id="flowUi"]/div[@id="state_decide8"]/img[1]'
-            result8 = get_result(self.driver.find_element_by_xpath(xpath8).get_attribute("src"))
+            result8 = get_process_state(self.driver.find_element_by_xpath(xpath8).get_attribute("src"))
             print u"获取到的匀光匀色的状态为：" + result8
             time.sleep(1)
 
@@ -128,7 +130,7 @@ class CaseLoginICenter(unittest.TestCase):
 
                 # 判断"数据组织"状态，如果为错误，则流程结束
                 xpath3 = '//div[@id="flowUi"]/div[@id="state_decide3"]/img[1]'
-                result3 = get_result(self.driver.find_element_by_xpath(xpath3).get_attribute("src"))
+                result3 = get_process_state(self.driver.find_element_by_xpath(xpath3).get_attribute("src"))
                 if result3 == "cuowu":
                     print "result3 error"
                     process_result = False
@@ -136,7 +138,7 @@ class CaseLoginICenter(unittest.TestCase):
 
                 # 判断"并行"状态，如果为错误，则流程结束
                 xpath4 = '//div[@id="flowUi"]/div[@id="state_decide4"]/img[1]'
-                result4 = get_result(self.driver.find_element_by_xpath(xpath4).get_attribute("src"))
+                result4 = get_process_state(self.driver.find_element_by_xpath(xpath4).get_attribute("src"))
                 if result4 == "cuowu":
                     print "result4 error"
                     process_result = False
@@ -144,7 +146,7 @@ class CaseLoginICenter(unittest.TestCase):
 
                 # 判断"正射校正"状态，如果为错误，则流程结束
                 xpath5 = '//div[@id="flowUi"]/div[@id="state_decide5"]/img[1]'
-                result5 = get_result(self.driver.find_element_by_xpath(xpath5).get_attribute("src"))
+                result5 = get_process_state(self.driver.find_element_by_xpath(xpath5).get_attribute("src"))
                 if result5 == "cuowu":
                     print u"正射校正状态错误"
                     print "result5 error"
@@ -153,7 +155,7 @@ class CaseLoginICenter(unittest.TestCase):
 
                 # 判断"正射校正"状态，如果为错误，则流程结束
                 xpath6 = '//div[@id="flowUi"]/div[@id="state_decide6"]/img[1]'
-                result6 = get_result(self.driver.find_element_by_xpath(xpath6).get_attribute("src"))
+                result6 = get_process_state(self.driver.find_element_by_xpath(xpath6).get_attribute("src"))
                 if result6 == "cuowu":
                     print u"正射校正状态错误"
                     process_result = False
@@ -161,7 +163,7 @@ class CaseLoginICenter(unittest.TestCase):
 
                 # 判断"GS融合"状态，如果为错误，则流程结束
                 xpath11 = '//div[@id="flowUi"]/div[@id="state_decide11"]/img[1]'
-                result11 = get_result(self.driver.find_element_by_xpath(xpath11).get_attribute("src"))
+                result11 = get_process_state(self.driver.find_element_by_xpath(xpath11).get_attribute("src"))
                 if result11 == "cuowu":
                     print u"GS融合状态错误"
                     process_result = False
