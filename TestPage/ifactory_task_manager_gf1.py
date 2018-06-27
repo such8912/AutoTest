@@ -15,7 +15,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 class Gf1TaskManagerPage(BasePage):
     # 定位器，通过元素属性定位元素对象
     addtask_loc = ('XPATH', '//*/img[@class="taskImg"]')
-    # addtask_loc = ('XPATH', '//*[@class="taskImg"]')
     addtask_nav_loc = ('XPATH', '//*[@id="taskUi"]')
     task_name_loc = ('XPATH', '//*[@id="name"]')
     src_cor_loc = ('XPATH', '//*[@id="sourceCoord"]')
