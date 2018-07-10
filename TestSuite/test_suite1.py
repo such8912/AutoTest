@@ -34,7 +34,7 @@ if __name__ == "__main__":
     suite = creatsuite()
     # runner = unittest.TextTestRunner()
     # 定义测试报告存放位置
-    # 使用HTMLTestRunner生成结果报告到'Report'文件夹下，名为当前时间+result.html
+    # 使用HTMLTestRunner生成结果报告到'Report'文件夹下，名为当前时间+.html
     now_time = time.strftime("%Y-%m-%d %H_%M_%S")
     filename = report_path + "\\"+ 'TestResult' + now_time + '.html'  # 假设已新建report文件
     # 设置HTML的title和概括
