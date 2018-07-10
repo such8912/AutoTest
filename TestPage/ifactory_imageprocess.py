@@ -12,8 +12,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 # 继承BasePage类
 class ImageProcessPage(BasePage):
     # 定位器，通过元素属性定位元素对象
-    yunguangyunse_loc = ('XPATH', '//*[@id="46022e53ed064c75866be6701b67138f"]/img')
-    dom_loc = ('XPATH', '//*[@id="65bdc577d5b84c38959d8de790fa8205"]/img')
+    yunguangyunse_loc = ('XPATH', '//label[@title="GF1遥感卫星影像匀光匀色流程"]')
+    dom_loc = ('XPATH', '//label[@title="GF1遥感卫星影像DOM生成流程"]')
+    xiangqianfenfu_loc = ('XPATH', '//label[@title="GF1遥感卫星影像真彩色融合及镶嵌分幅流程"]')
 
     # 操作
     # 通过继承覆盖（Overriding）方法：如果子类和父类的方法名相同，优先用子类自己的方法。

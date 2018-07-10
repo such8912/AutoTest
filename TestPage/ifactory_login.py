@@ -20,6 +20,6 @@ class IfactoryLoginPage(BasePage):
         # 调用page中的_open打开连接
         self._open(self.base_url, self.pagetitle)
 
-    # 点击GF-1匀光匀色
+    # 点击登陆
     def click_login(self):
         self.find_element(self.login_loc).click()
