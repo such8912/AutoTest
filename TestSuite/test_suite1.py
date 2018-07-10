@@ -1,8 +1,8 @@
 # coding=utf-8
 import unittest, time
 import sys, os
+# 需要将HTMLTestRunner.py放在C:\Python27\Lib下
 from HTMLTestRunner import HTMLTestRunner
-from os import path
 
 reload(sys)
 sys.setdefaultencoding('utf8')
