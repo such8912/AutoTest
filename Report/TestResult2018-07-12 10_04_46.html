@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>测试报告标题</h1>
-<p class='attribute'><strong>Start Time:</strong> 2018-07-10 15:03:05</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:22.208000</p>
-<p class='attribute'><strong>Status:</strong> Pass 1</p>
+<p class='attribute'><strong>Start Time:</strong> 2018-07-12 10:04:46</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:08.903000</p>
+<p class='attribute'><strong>Status:</strong> Pass 1 Failure 1</p>
 
 <p class='description'>报告概括</p>
 </div>
@@ -222,7 +222,7 @@ function showOutput(id, name) {
 </tr>
 
 <tr class='passClass'>
-    <td>test_ifactory_login.CaseLoginICenter</td>
+    <td>test_ifactory_abb_login.CaseIFactory</td>
     <td>1</td>
     <td>1</td>
     <td>0</td>
@@ -231,7 +231,7 @@ function showOutput(id, name) {
 </tr>
 
 <tr id='pt1.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_login_liucheng: 测试登录用例</div></td>
+    <td class='none'><div class='testcase'>test_login: 测试登录用例</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -256,11 +256,85 @@ value://*[@id="change_img"]
     </td>
 </tr>
 
-<tr id='total_row'>
-    <td>Total</td>
-    <td>1</td>
+<tr class='failClass'>
+    <td>test_ifactory_add_process.CaseIFactory</td>
     <td>1</td>
     <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_gf1_ygys: 测试增加匀光匀色流程用例</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        fail</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: TJt^)uRm
+type:XPATH
+value://*[@id="change_img"]
+type:XPATH
+value://*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[4]/a
+type:XPATH
+value://label[@title="GF1遥感卫星影像匀光匀色流程"]
+type:XPATH
+value://*/img[@class="taskImg"]
+type:XPATH
+value://*[@id="name"]
+type:XPATH
+value://*[@id="name"]
+type:XPATH
+value://*[@id="sourceCoord"]
+type:XPATH
+value://*[@id="targetCoord"]
+type:XPATH
+value://*[@id="folderName"]
+type:XPATH
+value://*[@id="folderName"]
+type:XPATH
+value://*[@id="newFolder"]
+type:XPATH
+value://*[@id="newFolder"]
+type:LINK_TEXT
+value:下一步
+type:LINK_TEXT
+value:完成
+type:XPATH
+value://*[@id="taskUi"]/li[1]/img[@id="start"]
+type:LINK_TEXT
+value:确定
+获取到的匀光匀色的状态为：zhunbei
+获取到的匀光匀色的状态为：zhunbei
+result3 error
+进入到断言前process_result的值:False
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\AutoTest\TestCase\test_ifactory_add_process.py", line 194, in test_gf1_ygys
+    self.assertTrue(process_result, msg="æµç¨è¿è¡å¤±è´¥")
+AssertionError: æµç¨è¿è¡å¤±è´¥
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>
     <td>0</td>
     <td>&nbsp;</td>
 </tr>

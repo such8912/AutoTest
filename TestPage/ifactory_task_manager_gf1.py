@@ -23,7 +23,7 @@ class Gf1TaskManagerPage(BasePage):
     origin_image_loc = ('XPATH', '//*[@id="folderName"]')
     button_next_loc = ('LINK_TEXT', '下一步')
     button_finish_loc = ('LINK_TEXT', '完成')
-    start_img_loc =('XPATH', '//*[@id="taskUi"]/li[1]/img[@id="start"]')
+    start_img_loc = ('XPATH', '//*[@id="taskUi"]/li[1]/img[@id="start"]')
     button_ok_button = ('LINK_TEXT', '确定')
 
     # 操作
@@ -125,7 +125,7 @@ class Gf1TaskManagerPage(BasePage):
         elem = self.find_element(self.trg_cor_loc)
         Select(elem).select_by_visible_text(text_input)
 
-     # 输入基础参数影像分辨率Image resolution
+    # 输入基础参数影像分辨率Image resolution
     def input_image_resolution(self, text):
         if text == "":
             text_input = 0

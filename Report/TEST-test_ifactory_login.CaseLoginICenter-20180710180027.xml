@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="test_ifactory_login.CaseLoginICenter-20180710180027" tests="1" time="23.782">
+	<testcase classname="test_ifactory_login.CaseLoginICenter" name="test_login_liucheng" time="23.782"/>
+	<system-out>
+<![CDATA[type:XPATH
+value://*[@id="change_img"]
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

@@ -1,9 +1,7 @@
 # coding=utf-8
 import unittest, time
 import sys, os
-# 需要将HTMLTestRunner.py放在C:\Python27\Lib下
-from HTMLTestRunner import HTMLTestRunner
-
+# pip install xmlrunner
 from xmlrunner import xmlrunner
 
 reload(sys)
@@ -36,7 +34,6 @@ if __name__ == "__main__":
     suite = creatsuite()
 
     # runner = xmlrunner.XMLTestRunner(output='report')#输入到report文件夹中
-    runner = xmlrunner.XMLTestRunner(output=report_path + "\\")#输入到eport文件夹中
-    report_path + "\\"
+    runner = xmlrunner.XMLTestRunner(output=report_path + "\\")#输入到Report文件夹中
     runner.run(suite)
 

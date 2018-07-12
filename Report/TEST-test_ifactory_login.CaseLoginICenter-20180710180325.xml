@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<testsuite errors="1" failures="0" name="test_ifactory_login.CaseLoginICenter-20180710180325" tests="1" time="13.242">
+	<testcase classname="test_ifactory_login.CaseLoginICenter" name="test_login_liucheng" time="13.242">
+		<error message="流程进行失败" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\AutoTest\TestCase\test_ifactory_login.py", line 58, in test_login_liucheng
+    self.assertTrue(process_result, msg="流程进行失败")
+AssertionError: 流程进行失败
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[type:XPATH
+value://*[@id="change_img"]
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

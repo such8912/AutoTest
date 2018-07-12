@@ -25,26 +25,26 @@ def get_process_state(path):
     return state
 
 
-class CaseLoginICenter(unittest.TestCase):
+class CaseIFactory(unittest.TestCase):
 
     def setUp(self):
         self.driver = BrowserEngine(self).get_browser()  # 启动浏览器
 
         # ip = "http://192.168.31.167:8283"
-        ip = "http://192.168.159.133:8283"
+        ip = "http://192.168.48.110:8283"
         self.login_url = ip + "/pixelfactory/views/index.html"
         self.homepage_url = ip + "/pixelfactory/views/task/index.html"
         self.image_process_url = ip + "/pixelfactory/views/task/flows.html"
         self.add_task_gf1_url = ip + "/pixelfactory/views/task/task.html?id=46022e53ed064c75866be6701b67138f"
 
         # data
-        self.name = "test_task01"  # 名称
+        self.name = "test_task102"  # 名称
         self.src_cor = "GCS WGS 1984"  # 源坐标系，已设置缺省值GCS WGS 1984
         self.trg_cor = "GCS WGS 1984"  # 目的坐标系，已设置缺省值GCS WGS 1984
         self.org_path = "/home/data/3j-GF1/input"  # 原始影像路径
 
     # 用例执行体
-    def test_login_liucheng(self):
+    def test_login(self):
         u"""测试登录用例"""
         # 声明LoginPage类对象
         login_page = IfactoryLoginPage(self.driver, self.login_url, "Login")

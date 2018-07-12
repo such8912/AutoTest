@@ -6,6 +6,7 @@ Project:使用unittest框架编写测试用例,实现GF-1匀光匀色流程创�
 '''
 import unittest
 import time
+import random
 
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
@@ -25,26 +26,38 @@ def get_process_state(path):
     return state
 
 
-class CaseLoginICenter(unittest.TestCase):
+# 产生一个长度为8的随机字符串
+def random_str8():
+    seed = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    sa = []
+    for i in range(8):
+        sa.append(random.choice(seed))
+    salt = ''.join(sa)
+    print salt
+    return salt
+
+
+class CaseIFactory(unittest.TestCase):
 
     def setUp(self):
         self.driver = BrowserEngine(self).get_browser()  # 启动浏览器
 
-        # ip = "http://192.168.31.167:8283"
-        ip = "http://192.168.159.133:8283"
+        ip = "http://192.168.48.110:8283"
+        # ip = "http://192.168.159.133:8283"
         self.login_url = ip + "/pixelfactory/views/index.html"
         self.homepage_url = ip + "/pixelfactory/views/task/index.html"
         self.image_process_url = ip + "/pixelfactory/views/task/flows.html"
         self.add_task_gf1_url = ip + "/pixelfactory/views/task/task.html?id=46022e53ed064c75866be6701b67138f"
 
         # data
-        self.name = "test_task01"  # 名称
+        # self.name = "test_task101"  # 名称
+        self.name = random_str8()
         self.src_cor = "GCS WGS 1984"  # 源坐标系，已设置缺省值GCS WGS 1984
         self.trg_cor = "GCS WGS 1984"  # 目的坐标系，已设置缺省值GCS WGS 1984
         self.org_path = "/home/data/3j-GF1/input"  # 原始影像路径
 
     # 用例执行体
-    def test_login_liucheng(self):
+    def test_gf1_ygys(self):
         u"""测试增加匀光匀色流程用例"""
         # 声明LoginPage类对象
         login_page = IfactoryLoginPage(self.driver, self.login_url, "Login")
