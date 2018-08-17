@@ -98,15 +98,6 @@ class Gf1TaskManagerPage(BasePage):
         elem = self.find_element(self.trg_cor_loc)
         Select(elem).select_by_visible_text(text_input)
 
-    # 选择基础参数-产品类型
-    def select_product_type(self, text):
-        if text != "GEOTIFF" and text != "SPIMG":
-            text_input = "GEOTIFF"
-        else:
-            text_input = text
-        elem = self.find_element(self.trg_cor_loc)
-        Select(elem).select_by_visible_text(text_input)
-
     # 选择基础参数-投影类型
     def select_projection_method(self, text):
         if text != "WGS84" and text != "Gauss-Kruger" and text != "UTM":

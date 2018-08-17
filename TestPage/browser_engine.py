@@ -6,6 +6,7 @@ class BrowserEngine(object):
     def __init__(self, driver):
         self.driver = driver
 
+    # 默认使用Chrome浏览器测试，如需要其他浏览器引擎，则修改
     browser_type = "Chrome"
 
     def get_browser(self):

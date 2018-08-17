@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
+from PIL import ImageGrab  # 截屏 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pillow
+from Log.mylog import MyLog # 日志
+import time,os
+
+cp = os.getcwd()
+sp = os.path.join(cp, "screen_shot")
 
 
 class BasePage(object):
@@ -61,6 +66,16 @@ class BasePage(object):
                     lambda driver: driver.find_element_by_css_selector(value).is_displayed())
                 elem = self.driver.find_element_by_css_selector(value)
         except Exception:
+            # 截屏
+            now_time = time.strftime("%Y-%m-%d %H_%M_%S")
+            im = ImageGrab.grab()
+            im.save(sp + "/" + now_time + '_error.jpg', 'jpeg')
+
+            # 打印日志
+            log = MyLog()
+            log.log_writing("info", "类型为%s,值为%s的控件获取失败"%(type,value))
+
+            # 抛异常
             raise ValueError("No such element found" + str(element))
         return elem
 
@@ -98,6 +113,9 @@ class BasePage(object):
                     lambda driver: driver.find_elements_by_css_selector(value).is_displayed())
                 elem = self.driver.find_elements_by_css_selector(value)
             else:
+                now_time = time.strftime("%Y-%m-%d %H_%M_%S")
+                im = ImageGrab.grab()
+                im.save(sp + "/" + now_time + '_error.jpg', 'jpeg')
                 raise NameError("Please correct the type in function parameter")
         except Exception:
             raise ValueError("No such element found" + str(element))

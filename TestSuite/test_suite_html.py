@@ -8,8 +8,8 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 # 获取工程路径和测试报告路径
-project_path = os.path.dirname(os.path.realpath(__file__))
-project_path = os.path.dirname(os.path.realpath(project_path))
+file_path = os.path.dirname(os.path.realpath(__file__))
+project_path = os.path.dirname(os.path.realpath(file_path))
 print project_path
 report_path = os.path.join(project_path, 'Report')
 print report_path
